@@ -4,16 +4,12 @@ from flask import Flask, render_template, redirect, request, flash
 from models import db, connect_db, Pet
 from forms import AddPetForm
 
-from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///adopt"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["SECRET_KEY"] = "38432084"
-app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
-
-debug = DebugToolbarExtension(app)
 
 connect_db(app)
 app.app_context().push()
